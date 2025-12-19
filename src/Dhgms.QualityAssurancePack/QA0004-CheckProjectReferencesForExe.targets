@@ -11,7 +11,7 @@
     </ItemGroup>
   </Target>
 
-  <Target Name="CheckProjectReferencesForExe" BeforeTargets="Build">
+  <Target Name="CheckProjectReferencesForExe" BeforeTargets="Build" Condition="'@(ProjectReference)' != ''">
     <ItemGroup>
       <ExeReferences Include="@(ProjectReference)" />
     </ItemGroup>
