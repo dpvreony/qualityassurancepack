@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Copyright (c) 2015 - 2026 DPVreony and Contributors. All rights reserved.
+// DPVreony and Contributors licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for full license information.
+
+using System;
 using System.Collections.Generic;
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Framework;
@@ -14,22 +18,22 @@ namespace Dhgms.QualityAssurancePack.Features.CheckProjectOutputType
         /// Gets or sets the path to the project file to evaluate.
         /// </summary>
         [Required]
-        public string ProjectPath { get; set; }
+        public string? ProjectPath { get; set; }
 
         /// <summary>
         /// Gets or sets the target framework to use when evaluating the project.
         /// If not specified, the project's default will be used.
         /// </summary>
-        public string TargetFramework { get; set; }
+        public string? TargetFramework { get; set; }
 
         /// <summary>
         /// Gets the OutputType property value from the project.
         /// </summary>
         [Output]
-        public string OutputType { get; private set; }
+        public string? OutputType { get; private set; }
 
         /// <summary>
-        /// Gets a value indicating whether the task successfully retrieved the OutputType. 
+        /// Gets a value indicating whether the task successfully retrieved the OutputType.
         /// </summary>
         [Output]
         public bool Success { get; private set; }
@@ -55,16 +59,14 @@ namespace Dhgms.QualityAssurancePack.Features.CheckProjectOutputType
                 return true; // Continue even if file not found
             }
 
-            ProjectCollection projectCollection = null;
-
             try
             {
                 var globalProps = new Dictionary<string, string>();
 
                 // If a specific target framework is requested, use it
-                if (!string.IsNullOrEmpty(TargetFramework))
+                if (!string.IsNullOrWhiteSpace(TargetFramework))
                 {
-                    globalProps["TargetFramework"] = TargetFramework;
+                    globalProps["TargetFramework"] = TargetFramework!;
                     Log.LogMessage(
                         MessageImportance.Low,
                         $"Evaluating project '{ProjectPath}' with TargetFramework='{TargetFramework}'");
@@ -77,32 +79,34 @@ namespace Dhgms.QualityAssurancePack.Features.CheckProjectOutputType
                 }
 
                 // Load the project with global properties
-                projectCollection = new ProjectCollection();
-                var project = projectCollection.LoadProject(
-                    ProjectPath,
-                    globalProps,
-                    toolsVersion: null);
-
-                // Get the OutputType property
-                OutputType = project.GetPropertyValue("OutputType");
-
-                // If OutputType is empty, it defaults to "Library" in most project types
-                if (string.IsNullOrEmpty(OutputType))
+                using (var projectCollection = new ProjectCollection())
                 {
-                    OutputType = "Library";
-                    Log.LogMessage(
-                        MessageImportance.Low,
-                        $"Project '{ProjectPath}' has no explicit OutputType, defaulting to 'Library'");
-                }
-                else
-                {
-                    Log.LogMessage(
-                        MessageImportance.Low,
-                        $"Project '{ProjectPath}' has OutputType='{OutputType}'");
-                }
+                    var project = projectCollection.LoadProject(
+                        ProjectPath!,
+                        globalProps,
+                        toolsVersion: null);
 
-                Success = true;
-                return true;
+                    // Get the OutputType property
+                    OutputType = project.GetPropertyValue("OutputType");
+
+                    // If OutputType is empty, it defaults to "Library" in most project types
+                    if (string.IsNullOrEmpty(OutputType))
+                    {
+                        OutputType = "Library";
+                        Log.LogMessage(
+                            MessageImportance.Low,
+                            $"Project '{ProjectPath}' has no explicit OutputType, defaulting to 'Library'");
+                    }
+                    else
+                    {
+                        Log.LogMessage(
+                            MessageImportance.Low,
+                            $"Project '{ProjectPath}' has OutputType='{OutputType}'");
+                    }
+
+                    Success = true;
+                    return true;
+                }
             }
             catch (Exception ex)
             {
@@ -111,14 +115,6 @@ namespace Dhgms.QualityAssurancePack.Features.CheckProjectOutputType
                 OutputType = string.Empty;
                 Success = false;
                 return true; // Continue even on error
-            }
-            finally
-            {
-                // Clean up
-                if (projectCollection != null)
-                {
-                    projectCollection.Dispose();
-                }
             }
         }
     }
