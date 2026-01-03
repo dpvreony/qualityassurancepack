@@ -1,5 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\Dhgms.QualityAssurancePack\Dhgms.QualityAssurancePack.targets" />
+	<PropertyGroup>
+		<QualityAssurancePackTasksAssembly>$(MSBuildThisFileDirectory)..\Dhgms.QualityAssurancePack\bin\$(Configuration)\netstandard2.0\Dhgms.QualityAssurancePack.dll</QualityAssurancePackTasksAssembly>
+	</PropertyGroup>
+
+	<Import Project="..\Dhgms.QualityAssurancePack\Dhgms.QualityAssurancePack.targets" />
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
