@@ -1,16 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.1.11312.151 d18.0
+VisualStudioVersion = 18.1.11312.151
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dhgms.QualityAssurancePack", "Dhgms.QualityAssurancePack\Dhgms.QualityAssurancePack.csproj", "{ADEF9916-3104-40CD-82E7-CEDDCAA41B9E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dhgms.QualityAssurancePack.Example", "Dhgms.QualityAssurancePack.Example\Dhgms.QualityAssurancePack.Example.csproj", "{12DE99C4-E46D-47B0-88D4-85E3AA880093}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dhgms.QualityAssurancePack.TestUpstreamProject", "Dhgms.QualityAssurancePack.TestUpstreamProject\Dhgms.QualityAssurancePack.TestUpstreamProject.csproj", "{6FF037ED-B391-46BF-AA47-3D6E7CFDD5CD}"
-	ProjectSection(ProjectDependencies) = postProject
-		{ADEF9916-3104-40CD-82E7-CEDDCAA41B9E} = {ADEF9916-3104-40CD-82E7-CEDDCAA41B9E}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dhgms.QualityAssurancePack.UnitTests", "Dhgms.QualityAssurancePack.UnitTests\Dhgms.QualityAssurancePack.UnitTests.csproj", "{234F8D3D-451D-43B1-91B8-F6FE89314AD4}"
 EndProject
@@ -28,14 +21,6 @@ Global
 		{ADEF9916-3104-40CD-82E7-CEDDCAA41B9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADEF9916-3104-40CD-82E7-CEDDCAA41B9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADEF9916-3104-40CD-82E7-CEDDCAA41B9E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{12DE99C4-E46D-47B0-88D4-85E3AA880093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12DE99C4-E46D-47B0-88D4-85E3AA880093}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12DE99C4-E46D-47B0-88D4-85E3AA880093}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12DE99C4-E46D-47B0-88D4-85E3AA880093}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6FF037ED-B391-46BF-AA47-3D6E7CFDD5CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6FF037ED-B391-46BF-AA47-3D6E7CFDD5CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6FF037ED-B391-46BF-AA47-3D6E7CFDD5CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6FF037ED-B391-46BF-AA47-3D6E7CFDD5CD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{234F8D3D-451D-43B1-91B8-F6FE89314AD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{234F8D3D-451D-43B1-91B8-F6FE89314AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{234F8D3D-451D-43B1-91B8-F6FE89314AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,8 +34,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{12DE99C4-E46D-47B0-88D4-85E3AA880093} = {C35BB175-EF1F-4052-ADBA-2B660F0172EA}
-		{6FF037ED-B391-46BF-AA47-3D6E7CFDD5CD} = {C35BB175-EF1F-4052-ADBA-2B660F0172EA}
 		{234F8D3D-451D-43B1-91B8-F6FE89314AD4} = {C35BB175-EF1F-4052-ADBA-2B660F0172EA}
 		{BB157CCB-DA3D-49A5-AD03-DBAB1AC04929} = {C35BB175-EF1F-4052-ADBA-2B660F0172EA}
 	EndGlobalSection
