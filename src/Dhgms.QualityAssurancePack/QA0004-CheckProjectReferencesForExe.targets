@@ -16,6 +16,7 @@
 
     <Target Name="CheckProjectReferencesForExe" BeforeTargets="Build" Condition="'@(ProjectReference)' != ''">
         <Message Importance="normal" Text="Checking Project References for EXE output types..." />
+        <Message Importance="high" Text="Searching for MSBuild assembly: $(QualityAssurancePackTasksAssembly)" />
         <ItemGroup>
             <ExeReferences Include="@(ProjectReference)" />
         </ItemGroup>
