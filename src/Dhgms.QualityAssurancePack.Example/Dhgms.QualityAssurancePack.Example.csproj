@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-      <QualityAssurancePackTasksAssembly>$(MSBuildThisFileDirectory)../Dhgms.QualityAssurancePack/bin/$(Configuration)/net10.0/Dhgms.QualityAssurancePack.dll</QualityAssurancePackTasksAssembly>
+      <QualityAssurancePackTasks_Assembly>$(MSBuildThisFileDirectory)../Dhgms.QualityAssurancePack/bin/$(Configuration)/net10.0/Dhgms.QualityAssurancePack.dll</QualityAssurancePackTasks_Assembly>
     </PropertyGroup>
 
   <Import Project="..\Dhgms.QualityAssurancePack\Dhgms.QualityAssurancePack.targets" />

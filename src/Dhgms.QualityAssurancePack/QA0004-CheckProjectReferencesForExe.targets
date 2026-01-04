@@ -1,12 +1,12 @@
 ﻿<Project>
-    <PropertyGroup>
-        <QualityAssurancePackTasksAssembly Condition="'$(QualityAssurancePackTasksAssembly)' == ''">$(MSBuildThisFileDirectory)../lib/net10.0/Dhgms.QualityAssurancePack.dll</QualityAssurancePackTasksAssembly>
-    </PropertyGroup>
-
+  <PropertyGroup>
+    <QualityAssurancePackTasks_TFM Condition=" '$(MSBuildRuntimeType)' != 'Core' ">net472</QualityAssurancePackTasks_TFM>
+    <QualityAssurancePackTasks_TFM Condition=" '$(MSBuildRuntimeType)' == 'Core' ">net10.0</QualityAssurancePackTasks_TFM>
+    <QualityAssurancePackTasks_Assembly Condition="'$(QualityAssurancePackTasks_Assembly)' == ''">$(MSBuildThisFileDirectory)../tasks/$(QualityAssurancePackTasks_TFM)/Dhgms.QualityAssurancePack.dll</QualityAssurancePackTasks_Assembly>
+  </PropertyGroup>
     <UsingTask TaskName="Dhgms.QualityAssurancePack.Features.CheckProjectOutputType.GetProjectOutputTypeTask"
-               AssemblyFile="$(QualityAssurancePackTasksAssembly)" 
-               Condition="Exists('$(QualityAssurancePackTasksAssembly)')"
-               Runtime="NET" />
+             AssemblyFile="$(QualityAssurancePackTasks_Assembly)" 
+             Condition="Exists('$(QualityAssurancePackTasks_Assembly)')" />
 
     <Target Name="GetOutputType" Returns="@(OutputTypeItem)">
         <ItemGroup>
@@ -16,7 +16,7 @@
 
     <Target Name="CheckProjectReferencesForExe" BeforeTargets="Build" Condition="'@(ProjectReference)' != ''">
         <Message Importance="normal" Text="Checking Project References for EXE output types..." />
-        <Message Importance="high" Text="Searching for MSBuild assembly: $(QualityAssurancePackTasksAssembly)" />
+        <Message Importance="high" Text="Searching for MSBuild assembly: $(QualityAssurancePackTasks_Assembly)" />
         <ItemGroup>
             <ExeReferences Include="@(ProjectReference)" />
         </ItemGroup>
