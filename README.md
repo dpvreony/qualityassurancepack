@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This project is now merged into: https://github.com/dpvreony/gripe
+
 # Quality Assurance Pack
 
 Quality Assurance Pack is a starter nuget package to stick in projects that bundles together various Roslyn Analyzers and other tools that can be handy in Quality Assurance of a development project. The projects bundled into this are subjective and may not suit your tastes, but it's a good proof of concept on how you can do something similar for your own team.
